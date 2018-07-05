@@ -67,7 +67,49 @@ export default {
     }
   }
   ```
-
+  * this.$parent传参
+父组件
+```javascript
+export default {
+  methods：{
+    faParent(msg){
+      console.log(msg);//这里的msg就是子组件传过来的参数
+    }
+  }
+}
+```
+子组件
+```javascript
+export default {
+  methods:{
+    clickParent(){
+      this.$parent.faParent('通过$parent传参')
+    }
+  }
+}
+```
+* 如果子组件想要访问根属性可通过this.$root访问
+根实例
+```javascript
+new Vue({
+  el: '#app',
+  data () {
+    return {
+      msg: '根组件'
+    }
+  }
+})
+```
+子组件
+```javascript
+export default {
+  methods:{
+    clickRoot(){
+      console.log(this.$root.msg)
+    }
+  }
+}
+```
  
 
 
