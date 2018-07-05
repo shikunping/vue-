@@ -43,7 +43,30 @@ export default {
   }
  }
  ```
- this.$children返回的是所有子组件的实例，如果你知道组件的顺序才可以这么使用，
+ this.$children返回的是所有子组件的实例，如果你知道组件的顺序才可以这么使用
+ 二，子组件给父组件传参
+  * $emit触发父组件自定义事件
+  子组件
+  ```javascript
+  export default {
+    methods:{
+      clickEmit(){
+        this.$emit('emitTap','子组件传给父组件的参数$emit');
+      }//点击执行这个函数
+    }
+  }
+  ```
+  父组件
+  ```javascript
+  <new-slot v-on:emitTap="faEmit"></new-slot>
+  export default {
+    methods:{
+      faEmit(msg){
+        console.log(msg);//这里的msg就是子组件传过来的参数
+      }
+    }
+  }
+  ```
 
  
 
