@@ -25,6 +25,7 @@ export default {
 }
 ```
 子组件
+```javascript
 export default {
    methods:{
       add(data){
@@ -32,6 +33,7 @@ export default {
       }
    }
 }
+```
  * 通过$children来传参
  在父组件的代码里：
  ```javascript
