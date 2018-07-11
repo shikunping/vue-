@@ -1,4 +1,4 @@
-# vue-组件之间的传参方式
+# vue组件之间的传参方式
 总结组件之间的传参方式
 
 一，父组件传参给子组件
@@ -44,6 +44,29 @@ export default {
  }
  ```
  this.$children返回的是所有子组件的实例，如果你知道组件的顺序才可以这么使用
+ * 通过resolve和inject来传参
+  父组件
+ ```javascript
+ export default {
+   provide: function () {
+    return {
+      getMap: this.msg
+    }
+  },
+    data () {
+    return {
+      msg: 'Welcome to Your Vue.js App'
+    }
+  }
+ }
+ ```
+  子组件
+  ```javascript
+  export default {
+    inject: ['getMap']
+  }
+  ```
+  这种方式跟props很相似，但是依赖注入这种方式不是响应式的，如果我在父组件里修改了msg的值是不会反应到子组件里
  
  二，子组件给父组件传参
   * $emit触发父组件自定义事件
